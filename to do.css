@@ -260,3 +260,8 @@ footer {
     display: flex;
   }
 }
+@media (min-width: 1200px) {
+  .inputcontainer {
+    align-items: center;
+  }
+}
