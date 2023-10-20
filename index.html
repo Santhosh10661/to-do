@@ -3,7 +3,119 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="to do.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
     <title>to do list</title>
   </head>
-  <body></body>
+  <body>
+    <div class="container-fluid">
+      <div class="row imgContainer-dark position-absolute">
+        <img
+          src="images/bg-desktop-dark.jpg"
+          alt=""
+          class="d-none d-md-block"
+        />
+        <img src="images/bg-mobile-dark.jpg" alt="" class="d-block d-md-none" />
+      </div>
+      <div
+        class="row imgContainer-light position-absolute"
+        style="display: none"
+      >
+        <img
+          src="images/bg-desktop-light.jpg"
+          alt=""
+          class="d-none d-md-block"
+        />
+        <img
+          src="images/bg-mobile-light.jpg"
+          alt=""
+          class="d-block d-md-none"
+        />
+      </div>
+      <main
+        class="row inputcontainer d-flex justify-content-center align-items-center"
+      >
+        <article class="listBox col-11 col-md-8 col-lg-6 col-xl-5 mt-5 mt-xl-0">
+          <header class="col mb-4 d-flex justify-content-between">
+            <span class="title display-6">TODO</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 26 26"
+              width="20"
+              height="20"
+              class="sun"
+            >
+              <path
+                fill="#FFF"
+                fill-rule="evenodd"
+                d="M13 21a1 1 0 011 1v3a1 1 0 11-2 0v-3a1 1 0 011-1zm-5.657-2.343a1 1
+                 0 010 1.414l-2.121 2.121a1 1 0 01-1.414-1.414l2.12-2.121a1 1 0 011.4
+                 15 0zm12.728 0l2.121 2.121a1 1 0 01-1.414 1.414l-2.121-2.12a1 1 0 01
+                 1.414-1.415zM13 8a5 5 0 110 10 5 5 0 010-10zm12 4a1 1 0 110 2h-3a1 1
+                  0 110-2h3zM4 12a1 1 0 110 2H1a1 1 0 110-2h3zm18.192-8.192a1 1 0 010
+                   1.414l-2.12 2.121a1 1 0 01-1.415-1.414l2.121-2.121a1 1 0 011.414 
+                   0zm-16.97 0l2.121 2.12A1 1 0 015.93 7.344L3.808 5.222a1 1 0 011.41
+                   4-1.414zM13 0a1 1 0 011 1v3a1 1 0 11-2 0V1a1 1 0 011-1z"
+              />
+            </svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 26 26"
+              width="20"
+              height="20"
+              class="moon"
+            >
+              <path
+                fill="#FFF"
+                fill-rule="evenodd"
+                d="M13 0c.81 0 1.603.074 2.373.216C10.593 1.199 7 5.43 7 10.5 7 16.299
+                 11.701 21 17.5 21c2.996 0 5.7-1.255 7.613-3.268C23.22 22.572 18.51 26
+                  13 26 5.82 26 0 20.18 0 13S5.82 0 13 0z"
+              />
+            </svg>
+          </header>
+          <div class="col inputfield d-flex mb-3 px-2 py-3">
+            <div class="inputCircle"></div>
+            <input type="text" class="task" placeholder="write something" />
+          </div>
+          <div class="col listContainer">
+            <div class="scrollableList">
+              <div class="col list"></div>
+            </div>
+            <footer class="col d-flex justify-content-between p-3">
+              <p class="itemsLeft col-4 col-sm-3 m-0">
+                <span class="count">0</span> items left
+              </p>
+              <div
+                class="col-4 filter d-none d-sm-flex justify-content-between"
+              >
+                <span class="all activeFilter">All</span
+                ><span class="active">Active</span
+                ><span class="completed">Completed</span>
+              </div>
+              <p class="clear text-end col-6 col-sm-4 m-0">Clear Completed</p>
+            </footer>
+          </div>
+          <div
+            class="col filter filterMOb d-flex d-sm-none justify-content-center p-3 mt-3"
+          >
+            <span class="col-3 all activeFilter">All</span>
+            <span class="col-3 active">Active</span>
+            <span class="col-3 completed">Completed</span>
+          </div>
+        </article>
+      </main>
+    </div>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="to do.js"></script>
+  </body>
 </html>

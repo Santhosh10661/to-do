@@ -1,6 +1,5 @@
 :root {
   /* Primary */
-
   --Bright-Blue: hsl(220, 98%, 61%);
   --CheckBackground: linear-gradient hsl(192, 100%, 67%) to hsl(280, 87%, 65%);
   /* Light Theme */
@@ -8,8 +7,7 @@
   --VeryLightGrayishBlue: hsl(236, 33%, 92%);
   --Light-GrayishBlue: hsl(233, 11%, 84%);
   --Dark-GrayishBlue: hsl(236, 9%, 61%);
-  --VeryDark-GrayishBlue: hsl(235, 19%, 35%);
-
+  --VeryDark-GrayishBlue-light: hsl(235, 19%, 35%);
   /* Dark Theme */
   --VeryDark-Blue: hsl(235, 21%, 11%);
   --VeryDark-DesaturatedBlue: hsl(235, 24%, 19%);
@@ -17,5 +15,248 @@
   --Light-GrayishBlue-hover: hsl(236, 33%, 92%);
   --Dark-GrayishBlue: hsl(234, 11%, 52%);
   --VeryDark-GrayishBlue: hsl(233, 14%, 35%);
-  --VeryDark-GrayishBlue: hsl(237, 14%, 26%);
+  --VeryDark-GrayishBlue-shadow: hsl(237, 14%, 26%);
+}
+body {
+  background-color: var(--VeryDark-Blue);
+  font-family: "Josefin Sans", sans-serif;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 700;
+}
+.imgContainer-dark,
+.imgContainer-light {
+  z-index: -1;
+  width: 100vw;
+}
+.sun {
+  cursor: pointer;
+}
+.moon {
+  display: none;
+  cursor: pointer;
+}
+.title {
+  letter-spacing: 0.3em;
+  font-weight: 700;
+}
+.inputcontainer {
+  height: 100vh;
+}
+article {
+  height: 514px;
+}
+.inputfield {
+  background-color: var(--VeryDark-DesaturatedBlue);
+  align-items: center;
+  border-radius: 4px;
+  box-shadow: 0px 2px 6px 0px var(--VeryDark-Blue);
+}
+input {
+  color: var(--Light-GrayishBlue);
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 18px;
+  font-weight: lighter;
+  caret-color: var(--Bright-Blue);
+  width: 100%;
+}
+.emptyInput::placeholder {
+  color: var(--Bright-Blue);
+}
+.circle,
+.inputCircle {
+  height: 20px;
+  width: 20px;
+  border: 1px solid var(--VeryDark-GrayishBlue);
+  border-radius: 50%;
+  margin: 0 1em;
+}
+.circle:hover,
+.inputCircle:hover {
+  cursor: pointer;
+  border: solid 1px transparent;
+  border-radius: 50%;
+  background-image: linear-gradient(hsl(235, 24%, 19%), hsl(235, 24%, 19%)),
+    linear-gradient(to right, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+}
+.task-completed-circle,
+.inputCircleMarked {
+  content: url(images/icon-check.svg);
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+}
+.task-completed-circle:hover,
+.inputCircleMarked:hover {
+  background-image: linear-gradient(
+      to right,
+      hsl(192, 100%, 67%),
+      hsl(280, 87%, 65%)
+    ),
+    linear-gradient(to right, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+}
+.listContainer {
+  background-color: var(--VeryDark-DesaturatedBlue);
+  border-radius: 4px;
+  box-shadow: 0px 2px 6px 0px var(--VeryDark-Blue);
+}
+.scrollableList {
+  max-height: 355px;
+  overflow-y: auto;
+}
+.scrollableList::-webkit-scrollbar {
+  display: none;
+  height: 100%;
+}
+.deleteBtn {
+  display: none;
+  position: absolute;
+  right: 0;
+}
+.addedlist:hover .deleteBtn {
+  display: flex;
+}
+.list {
+  display: flex;
+  justify-content: center;
+  flex-direction: column-reverse;
+  position: relative;
+}
+.addedlist {
+  display: flex;
+  border-bottom: 1px solid var(--VeryDark-GrayishBlue);
+  font-size: 18px;
+  font-weight: 400;
+  position: relative;
+  align-items: center;
+  color: var(--Light-GrayishBlue);
+  cursor: pointer;
+}
+.taskCompleted {
+  text-decoration: line-through;
+  color: var(--Dark-GrayishBlue);
+}
+footer {
+  font-size: 14px;
+  font-weight: lighter;
+  color: var(--Dark-GrayishBlue);
+}
+.filterMOb {
+  font-size: 14px;
+  background-color: var(--VeryDark-DesaturatedBlue);
+  border-radius: 4px;
+  color: var(--Dark-GrayishBlue);
+  box-shadow: 0px 2px 6px 0px var(--VeryDark-Blue);
+}
+.all:hover,
+.active:hover,
+.completed:hover,
+.clear:hover {
+  cursor: pointer;
+  color: var(--Light-GrayishBlue-hover);
+}
+.activeFilter {
+  color: var(--Bright-Blue);
+  /* transition: 0.2s ease-in-out; */
+}
+.activeFilter:hover {
+  color: var(--Bright-Blue);
+}
+
+/* light */
+.light .inputfield {
+  background: var(--VeryLightGray);
+  box-shadow: 0px 2px 10px 0px var(--Dark-GrayishBlue);
+}
+.light input {
+  color: var(--VeryDark-GrayishBlue-light);
+}
+.light .listContainer {
+  background-color: var(--VeryLightGray);
+  box-shadow: 0px 2px 10px 0px var(--Dark-GrayishBlue);
+}
+.light .addedlist {
+  border-bottom: 1px solid var(--VeryLightGrayishBlue);
+  color: var(--VeryDark-GrayishBlue);
+}
+.light .circle {
+  border: 1px solid var(--VeryLightGrayishBlue);
+}
+.light .circle:hover,
+.light .inputCircle:hover {
+  cursor: pointer;
+  border: solid 1px transparent;
+  border-radius: 50%;
+  background-image: linear-gradient(hsl(0, 0%, 98%), hsl(0, 0%, 98%)),
+    linear-gradient(to right, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+}
+.light .task-completed-circle:hover,
+.light .inputCircleMarked:hover {
+  background-image: linear-gradient(
+      to right,
+      hsl(192, 100%, 67%),
+      hsl(280, 87%, 65%)
+    ),
+    linear-gradient(to right, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+}
+.light .all:hover,
+.light .active:hover,
+.light .completed:hover,
+.light .clear:hover {
+  cursor: pointer;
+  color: var(--VeryDark-GrayishBlue-light);
+}
+.light .taskCompleted {
+  text-decoration: line-through;
+  color: var(--Light-GrayishBlue);
+}
+.light .activeFilter:hover {
+  color: var(--Bright-Blue);
+}
+.light .filterMOb {
+  font-size: 14px;
+  background-color: var(--VeryDark-DesaturatedBlue);
+  border-radius: 4px;
+  background-color: var(--VeryLightGray);
+  box-shadow: 0px 2px 10px 0px var(--Dark-GrayishBlue);
+}
+@media (max-width: 576px) {
+  .all:hover,
+  .active:hover,
+  .completed:hover,
+  .clear:hover {
+    cursor: default;
+    color: var(--Dark-GrayishBlue);
+  }
+  .activeFilter:hover {
+    color: var(--Bright-Blue);
+  }
+  .light .all:hover,
+  .light .active:hover,
+  .light .completed:hover,
+  .light .clear:hover {
+    cursor: default;
+    color: var(--Dark-GrayishBlue);
+  }
+  .light .activeFilter:hover {
+    color: var(--Bright-Blue);
+  }
+  .deleteBtn {
+    display: flex;
+  }
 }
