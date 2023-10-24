@@ -112,7 +112,7 @@ input {
   box-shadow: 0px 2px 6px 0px var(--VeryDark-Blue);
 }
 .scrollableList {
-  max-height: 355px;
+  max-height: 300px;
   overflow-y: auto;
 }
 .scrollableList::-webkit-scrollbar {
@@ -234,6 +234,12 @@ footer {
   border-radius: 4px;
   background-color: var(--VeryLightGray);
   box-shadow: 0px 2px 10px 0px var(--Dark-GrayishBlue);
+}
+.drag {
+  text-align: center;
+  font-size: 14px;
+  font-weight: lighter;
+  color: var(--Dark-GrayishBlue);
 }
 @media (max-width: 576px) {
   .all:hover,

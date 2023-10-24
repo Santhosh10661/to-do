@@ -21,6 +21,7 @@ function updateInputCircle() {
 document.addEventListener("DOMContentLoaded", reload);
 function reload() {
   updateLists();
+  dragAndDrop();
 }
 function updateLists() {
   let circle = document.querySelectorAll(".circle");
@@ -105,6 +106,7 @@ taskInput.addEventListener("keyup", (event) => {
           "incomplete"
         );
       }
+      addedTask.draggable = true;
       list.append(addedTask);
       taskInput.value = "";
       reload();
@@ -196,4 +198,50 @@ function deleteTask() {
   let task = this.parentElement;
   task.remove();
   updateCount();
+}
+
+// ---------------------------------------error--------------------------------------------
+// drag and drop
+function dragAndDrop() {
+  let draggables = document.querySelectorAll(".addedlist");
+  let dropZone = document.querySelector(".list");
+
+  draggables.forEach((item) => {
+    item.addEventListener("dragstart", () => {
+      item.classList.add("dragging");
+    });
+    item.addEventListener("dragend", () => {
+      item.classList.remove("dragging");
+    });
+  });
+
+  dropZone.addEventListener("dragover", (e) => {
+    e.preventDefault();
+
+    let bottomTask = insertAboveTask(dropZone, e.clientY);
+    let curTask = document.querySelector(".dragging");
+
+    if (!bottomTask) {
+      dropZone.appendChild(curTask);
+    } else {
+      dropZone.insertBefore(curTask, bottomTask);
+    }
+  });
+
+  const insertAboveTask = (dropZone, mouseY) => {
+    let elSeleted = dropZone.querySelectorAll(".addedlist:not(.dragging)");
+
+    let closestTask = null;
+    let closestOffset = Number.NEGATIVE_INFINITY;
+
+    elSeleted.forEach((el) => {
+      const { top } = el.getBoundingClientRect();
+      const offset = mouseY - top;
+      if (offset < 0 && offset > closestOffset) {
+        closestOffset = offset;
+        closestTask = el;
+      }
+    });
+    return closestTask;
+  };
 }
