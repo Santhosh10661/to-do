@@ -202,22 +202,42 @@ function deleteTask() {
 
 // ---------------------------------------error--------------------------------------------
 // drag and drop
+
+// sortableList.addEventListener("touchstart", touchStart);
+// sortableList.addEventListener("touchmove", touchMove);
+// sortableList.addEventListener("touchend", touchEnd);
+
 function dragAndDrop() {
   let draggables = document.querySelectorAll(".addedlist");
   let dropZone = document.querySelector(".list");
 
   draggables.forEach((item) => {
-    item.addEventListener("dragstart", () => {
-      item.classList.add("dragging");
-    });
-    item.addEventListener("dragend", () => {
-      item.classList.remove("dragging");
-    });
+    item.addEventListener("dragstart", dragStart);
+    item.addEventListener("dragend", dragEnd);
+    item.addEventListener("touchstart", dragStart);
+    item.addEventListener("touchend", dragEnd);
+  });
+
+  function dragStart() {
+    let dragStartItem = this;
+    dragStartItem.classList.add("dragging");
+  }
+  function dragEnd() {
+    let dragEndItem = this;
+    dragEndItem.classList.remove("dragging");
+  }
+
+  dropZone.addEventListener("touchmove", (e) => {
+    e.preventDefault();
+    dragOver(e);
   });
 
   dropZone.addEventListener("dragover", (e) => {
     e.preventDefault();
+    dragOver(e);
+  });
 
+  function dragOver(e) {
     let bottomTask = insertAboveTask(dropZone, e.clientY);
     let curTask = document.querySelector(".dragging");
 
@@ -226,7 +246,7 @@ function dragAndDrop() {
     } else {
       dropZone.insertBefore(curTask, bottomTask);
     }
-  });
+  }
 
   const insertAboveTask = (dropZone, mouseY) => {
     let elSeleted = dropZone.querySelectorAll(".addedlist:not(.dragging)");
