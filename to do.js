@@ -21,7 +21,7 @@ function updateInputCircle() {
 document.addEventListener("DOMContentLoaded", reload);
 function reload() {
   updateLists();
-  dragAndDrop();
+  // dragAndDrop();
 }
 function updateLists() {
   let circle = document.querySelectorAll(".circle");
@@ -207,61 +207,61 @@ function deleteTask() {
 // sortableList.addEventListener("touchmove", touchMove);
 // sortableList.addEventListener("touchend", touchEnd);
 
-function dragAndDrop() {
-  let draggables = document.querySelectorAll(".addedlist");
-  let dropZone = document.querySelector(".list");
+// function dragAndDrop() {
+//   let draggables = document.querySelectorAll(".addedlist");
+//   let dropZone = document.querySelector(".list");
 
-  draggables.forEach((item) => {
-    item.addEventListener("dragstart", dragStart);
-    item.addEventListener("dragend", dragEnd);
-    item.addEventListener("touchstart", dragStart);
-    item.addEventListener("touchend", dragEnd);
-  });
+//   draggables.forEach((item) => {
+//     item.addEventListener("dragstart", dragStart);
+//     item.addEventListener("dragend", dragEnd);
+//     item.addEventListener("touchstart", dragStart);
+//     item.addEventListener("touchend", dragEnd);
+//   });
 
-  function dragStart() {
-    let dragStartItem = this;
-    dragStartItem.classList.add("dragging");
-  }
-  function dragEnd() {
-    let dragEndItem = this;
-    dragEndItem.classList.remove("dragging");
-  }
+//   function dragStart() {
+//     let dragStartItem = this;
+//     dragStartItem.classList.add("dragging");
+//   }
+//   function dragEnd() {
+//     let dragEndItem = this;
+//     dragEndItem.classList.remove("dragging");
+//   }
 
-  dropZone.addEventListener("touchmove", (e) => {
-    e.preventDefault();
-    dragOver(e);
-  });
+//   dropZone.addEventListener("touchmove", (e) => {
+//     e.preventDefault();
+//     dragOver(e);
+//   });
 
-  dropZone.addEventListener("dragover", (e) => {
-    e.preventDefault();
-    dragOver(e);
-  });
+//   dropZone.addEventListener("dragover", (e) => {
+//     e.preventDefault();
+//     dragOver(e);
+//   });
 
-  function dragOver(e) {
-    let bottomTask = insertAboveTask(dropZone, e.clientY);
-    let curTask = document.querySelector(".dragging");
+//   function dragOver(e) {
+//     let bottomTask = insertAboveTask(dropZone, e.clientY);
+//     let curTask = document.querySelector(".dragging");
 
-    if (!bottomTask) {
-      dropZone.appendChild(curTask);
-    } else {
-      dropZone.insertBefore(curTask, bottomTask);
-    }
-  }
+//     if (!bottomTask) {
+//       dropZone.appendChild(curTask);
+//     } else {
+//       dropZone.insertBefore(curTask, bottomTask);
+//     }
+//   }
 
-  const insertAboveTask = (dropZone, mouseY) => {
-    let elSeleted = dropZone.querySelectorAll(".addedlist:not(.dragging)");
+//   const insertAboveTask = (dropZone, mouseY) => {
+//     let elSeleted = dropZone.querySelectorAll(".addedlist:not(.dragging)");
 
-    let closestTask = null;
-    let closestOffset = Number.NEGATIVE_INFINITY;
+//     let closestTask = null;
+//     let closestOffset = Number.NEGATIVE_INFINITY;
 
-    elSeleted.forEach((el) => {
-      const { top } = el.getBoundingClientRect();
-      const offset = mouseY - top;
-      if (offset < 0 && offset > closestOffset) {
-        closestOffset = offset;
-        closestTask = el;
-      }
-    });
-    return closestTask;
-  };
-}
+//     elSeleted.forEach((el) => {
+//       const { top } = el.getBoundingClientRect();
+//       const offset = mouseY - top;
+//       if (offset < 0 && offset > closestOffset) {
+//         closestOffset = offset;
+//         closestTask = el;
+//       }
+//     });
+//     return closestTask;
+//   };
+// }
