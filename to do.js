@@ -106,7 +106,7 @@ taskInput.addEventListener("keyup", (event) => {
           "incomplete"
         );
       }
-      addedTask.draggable = true;
+      // addedTask.draggable = true;
       list.append(addedTask);
       taskInput.value = "";
       reload();
